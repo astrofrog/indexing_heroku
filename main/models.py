@@ -7,7 +7,6 @@ from django.db import models
 
 
 class QuantityDefinition(models.Model):
-
     """
     Defines the meaning of a quantity, for use in a Glossary
     """
@@ -20,7 +19,6 @@ class QuantityDefinition(models.Model):
 
 
 class User(models.Model):
-
     """
     Define a user
     """
@@ -34,7 +32,6 @@ class User(models.Model):
 
 
 class Object(models.Model):
-
     """
     Define an Astronomical object
     """
@@ -47,7 +44,6 @@ class Object(models.Model):
 
 
 class Quantity(models.Model):
-
     """
     A 'well defined quantity'
     """
@@ -61,6 +57,8 @@ class Quantity(models.Model):
     date = models.DateTimeField(null=True)
     date_entered = models.DateTimeField()
     user = models.ForeignKey(User)
+
+    verbose_name_plural = "Quantities"
 
     def __unicode__(self):
         return "Quantity '" + self.definition.name + "' for object '" + self.object.name + "'"
