@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
-from django.core.exceptions import ObjectDoesNotExist
+# from django.core.exceptions import ObjectDoesNotExist
 from main.models import Quantity, QuantityDefinition, Object, User
 
 from datetime import datetime
@@ -21,7 +21,7 @@ def add_quantity(request):
     else:
         try:
             definition = QuantityDefinition.objects.get(name=quantity_name)
-        except ObjectDoesNotExist:
+        except:
             definition = QuantityDefinition(name=quantity_name)
             definition.save()
 
@@ -32,7 +32,7 @@ def add_quantity(request):
     else:
         try:
             object = Object.objects.get(name=object_name)
-        except ObjectDoesNotExist:
+        except:
             object = Object(name=object_name)
             object.save()
 
@@ -55,7 +55,7 @@ def add_quantity(request):
     else:
         try:
             user = User.objects.get(name=user_name)
-        except ObjectDoesNotExist:
+        except:
             user = User(name=user_name)
             user.save()
 
