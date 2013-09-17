@@ -22,15 +22,17 @@ def index(request):
 
 def object_view(request, object_name):
 
-    try:
-        object = Objects.object.get(name=object_name)
-    except:
-        object = None
+    object = Object.object.get(name=object_name)
+
+    # try:
+    #     object = Object.object.get(name=object_name)
+    # except:
+    #     object = None
 
     if object is None:
         quantities = []
     else:
-        quantities = Quantities.objects.filter(object=object)
+        quantities = Quantity.objects.filter(object=object)
 
     template = loader.get_template('main/object.html')
     context = RequestContext(request, {
