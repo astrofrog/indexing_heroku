@@ -8,6 +8,36 @@ from datetime import datetime
 
 from django.views.decorators.csrf import csrf_exempt
 
+from django.template import RequestContext, loader
+
+
+def index(request):
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    template = loader.get_template('polls/index.html')
+    context = RequestContext(request, {
+        'latest_question_list': latest_question_list,
+    })
+    return HttpResponse(template.render(context))
+
+
+def object_view(request, object_name):
+
+    try:
+        object = Objects.object.get(name=object_name)
+    except:
+        object = None
+
+    if object is None:
+        quantities = []
+    else:
+        quantities = Quantities.objects.filter(object=object)
+
+    template = loader.get_template('main/object.html')
+    context = RequestContext(request, {
+        'quantities': quantities,
+    })
+    return HttpResponse(template.render(context))
+
 
 @csrf_exempt
 def add_quantity(request):
@@ -41,7 +71,7 @@ def add_quantity(request):
     except KeyError:
         return HttpResponse("value is missing")
     except ValueError:
-        return HttpResponse("value should be a float")
+        return HttpResponse("value should be a float (was {0:s})".format(str(value)))
 
     try:
         unit = request.POST['unit']

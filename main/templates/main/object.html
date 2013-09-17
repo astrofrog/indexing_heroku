@@ -1,0 +1,9 @@
+{% if quantities %}
+    <ul>
+    {% for quantity in quantities %}
+        <li> {{ quantity.description.name }} {{ quantity.value }} </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No quantities are available.</p>
+{% endif %}
