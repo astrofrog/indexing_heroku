@@ -71,7 +71,7 @@ def add_quantity(request):
     except KeyError:
         return HttpResponse("value is missing")
     except ValueError:
-        return HttpResponse("value should be a float (was {0:s})".format(str(value)))
+        return HttpResponse("value should be a float (was {0:s})".format(str(request.POST['value'])))
 
     try:
         unit = request.POST['unit']
