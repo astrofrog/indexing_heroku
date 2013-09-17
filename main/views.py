@@ -22,7 +22,7 @@ def index(request):
 
 def object_view(request, object_name):
 
-    object = Object.object.get(name=object_name)
+    object = Object.objects.get(name=object_name)
 
     # try:
     #     object = Object.object.get(name=object_name)
