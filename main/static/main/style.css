@@ -2,3 +2,11 @@ body{
 	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 	padding: 50px;
 }
+
+tr:nth-child(odd)		{ background-color: #edf6ff; }
+
+tr:nth-child(even)		{ background-color:#fff; }
+
+table {
+	width: 800px;
+}
