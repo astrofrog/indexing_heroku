@@ -5,8 +5,12 @@ body{
 
 tr:nth-child(odd)		{ background-color: #edf6ff; }
 
-tr:nth-child(even)		{ background-color:#fff; }
+tr:nth-child(even)		{ background-color: #f5fafe; }
 
 table {
 	width: 800px;
+}
+
+td {
+	padding: 5px 20px;
 }
