@@ -7,7 +7,7 @@
 {% if quantities %}
     <ul>
     {% for quantity in quantities %}
-            <li> {{ quantity.definition.name }} [<a href="/main/definition/{{ quantity.definition.name}}/">?</a>] = {{ quantity.value }} {% if quantity.uncertainty %} &plusmn; {{ quantity.uncertainty }} {% endif %} {{ quantity.unit }} (from {{ quantity.origin }})</li>
+            <li> {{ quantity.definition.name }} <sup><a href="/main/definition/{{ quantity.definition.name}}/">?</a></sup> = {{ quantity.value }} {% if quantity.uncertainty %} &plusmn; {{ quantity.uncertainty }} {% endif %} {{ quantity.unit }}<sup><a href="{{ quantity.origin }}">ref</a></li>
     {% endfor %}
     </ul>
 {% else %}

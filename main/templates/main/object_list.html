@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+
+{% if objects %}
+    <table>
+    {% for quantity in quantities %}
+        <tr><td>{{ object.name }}</td></tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No objects are available.</p>
+{% endif %}

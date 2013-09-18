@@ -55,6 +55,18 @@ def definition_view(request, definition_name):
     return HttpResponse(template.render(context))
 
 
+def object_list(request):
+
+    objects = Object.objects.all()
+
+    template = loader.get_template('main/object_list.html')
+    context = RequestContext(request, {
+        'objects': objects
+    })
+
+    return HttpResponse(template.render(context))
+
+
 @csrf_exempt
 def add_quantity(request):
 
