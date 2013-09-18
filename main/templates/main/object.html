@@ -8,7 +8,6 @@
     <ul>
     {% for quantity in quantities %}
             <li> {{ quantity.definition.name }} [<a href="/main/definition/{{ quantity.definition.name}}/">?</a>] = {{ quantity.value }} {% if quantity.uncertainty %} &plusmn; {{ quantity.uncertainty }} {% endif %} {{ quantity.unit }} (from {{ quantity.origin }})</li>
-        {% endif %}
     {% endfor %}
     </ul>
 {% else %}
