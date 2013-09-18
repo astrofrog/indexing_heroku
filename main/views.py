@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.core.urlresolvers import reverse
 # from django.core.exceptions import ObjectDoesNotExist
 from main.models import Quantity, QuantityDefinition, Object, User
@@ -22,12 +22,10 @@ def index(request):
 
 def object_view(request, object_name):
 
-    object = Object.objects.get(name=object_name)
-
-    # try:
-    #     object = Object.object.get(name=object_name)
-    # except:
-    #     object = None
+    try:
+        object = Object.objects.get(name=object_name)
+    except:
+        object = None
 
     if object is None:
         quantities = []
@@ -39,6 +37,21 @@ def object_view(request, object_name):
         'quantities': quantities,
         'object': object,
     })
+
+    return HttpResponse(template.render(context))
+
+def definition_view(request, definition_name):
+
+    try:
+        definition = QuantityDefinition.objects.get(name=definition_name)
+    except QuantityDefinition.DoesNotExist:
+        raise Http404
+
+    template = loader.get_template('main/definition.html')
+    context = RequestContext(request, {
+        'definition': definition
+    })
+
     return HttpResponse(template.render(context))
 
 
