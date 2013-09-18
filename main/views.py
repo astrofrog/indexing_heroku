@@ -37,6 +37,7 @@ def object_view(request, object_name):
     template = loader.get_template('main/object.html')
     context = RequestContext(request, {
         'quantities': quantities,
+        'object': object,
     })
     return HttpResponse(template.render(context))
 
