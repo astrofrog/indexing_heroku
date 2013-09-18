@@ -1,3 +1,9 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+
+<h1>Object: {{ quantity.name }}</h1>
+
 {% if quantities %}
     <ul>
     {% for quantity in quantities %}
