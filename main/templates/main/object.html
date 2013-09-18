@@ -1,7 +1,7 @@
 {% if quantities %}
     <ul>
     {% for quantity in quantities %}
-        <li> {{ quantity.description.name }} {{ quantity.value }} </li>
+        <li> {{ quantity.definition.name }} {{ quantity.value }} </li>
     {% endfor %}
     </ul>
 {% else %}
