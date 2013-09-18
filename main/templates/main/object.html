@@ -5,13 +5,13 @@
 <h1>Object: {{ object.name }}</h1>
 
 {% if quantities %}
-        <table>
-            <th><td>Quantity</td><td>Origin</td></th>
+        <table border=1>
+            <tr><th>Quantity</th><th>Origin</th></tr>
     {% for quantity in quantities %}
     <tr>
     <td width='500'> {{ quantity.definition.name }} <sup><a href="/definition/{{ quantity.definition.name}}/">?</a></sup> = {{ quantity.value }} {% if quantity.uncertainty %} &plusmn; {{ quantity.uncertainty }} {% endif %} {{ quantity.unit }}</td><td><a href="http://adsabs.harvard.edu/">[{{ quantity.origin }}]</a></sup></td></tr>
     {% endfor %}
-    </ul>
+</table>
 {% else %}
     <p>No quantities are available.</p>
 {% endif %}
