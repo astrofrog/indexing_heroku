@@ -5,7 +5,7 @@
 {% if objects %}
     <table>
     {% for object in objects %}
-        <tr><td>{{ object.name }}</td></tr>
+        <tr><td><a href="/main/object/{{ object.name }}/">{{ object.name }}</a></td></tr>
     {% endfor %}
     </table>
 {% else %}
