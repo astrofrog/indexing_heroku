@@ -12,6 +12,7 @@ class QuantityDefinition(models.Model):
     """
 
     name = models.CharField(max_length=100)
+    long_name = models.CharFIeld(max_length=100)
     description = models.TextField(null=True)
 
     def __unicode__(self):

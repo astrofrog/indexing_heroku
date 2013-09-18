@@ -7,7 +7,12 @@
 {% if quantities %}
     <ul>
     {% for quantity in quantities %}
-        <li> {{ quantity.definition.name }} {{ quantity.value }} </li>
+        {% if quantity.uncertainty %}
+            <li> {{ quantity.definition.name }} = {{ quantity.value }} {{ quantity.unit }} (from {{ quantity.origin }})</li>
+        {% else %}
+            <li> {{ quantity.definition.name }} = {{ quantity.value }} &plusmn; {{ quantity.uncertainty }} {{ quantity.unit }} (from {{ quantity.origin }})</li>
+    &plusmn;
+        {% endif %}
     {% endfor %}
     </ul>
 {% else %}
